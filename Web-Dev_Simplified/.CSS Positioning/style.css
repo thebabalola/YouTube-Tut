@@ -1,0 +1,95 @@
+/* ---- Float and Positions were initially for designing CSS ----*/
+
+/* Position 
+1. static: Default position (which all html element have).
+2. relative : Same as static. But lets you add top, right, bottom, left. Makes it move relative to it's normal position
+3. absolute: Removes from the flow and positions absolute wrt to the parent. Parent has to be relative or absolute for top, right, bottom, left to work. Else it considers the main html element as the  parent .
+4. fixed : Fixed to a place. Doesn't give two shits about the parent. Always considers html element as the parent. Stays there when scrolled.
+5. sticky : Relative ( when normal) + fixed ( when scrolled) within the parent element. The values for top, right, bottom, left become active when scrolled
+
+ N.B: fixed and absolute are the same thing, just that; 
+ - fixed stays fixed on the page, no matter the scroll. while absolute moves with the parent
+*/
+
+.parent {
+	background-color: lightblue;
+	padding: 5px;
+	position: relative; /*default used, before absolute can be used (can be moved around using top, left, right, bottom etc - in a static movement )*/
+	height: 100vh;
+}
+
+.child-1 {
+	background-color: red;
+	position: absolute;  /*leaves normal flow of other elements, stays around the parent position (moves/scrolls along with the parent)*/
+	top: 0px; /*go to the very top of the parent (without leaving any padding)*/
+	right: 10px;	/*go to the very right of the parent (leaving any 10px padding away from the parent border*/
+}
+
+.child-2 {
+	background-color: yellow;
+	position: fixed;  /*Stays fixed to its position(no matter how much you scroll -nav bar, chatbot etc)*/
+	bottom: 10px;
+	right: 10px;
+}
+
+.child-3 {
+	background-color: green;
+	position: sticky; /*stays relative to it position, until you scroll pass then it get fixed*/
+	top: 0px; /*sticks to the top of the page, once you scroll past it parent element*/
+}
+
+
+/*Float
+
+float:left - move left
+float: right - move right
+*/
+
+
+
+
+/* --- Display: inline, Block, Inline-Block --- */
+
+/* Divs - are display: block by default. They take up the whole width of a web page
+		(that is elements within them stacks on themselves, in horizontal order)
+	Spans - are display: inline by default . And only take width of spaces they only occupy
+
+display: block - They take up the whole width of a web page (e.g divs, p, headings)
+display: inline - They only take up width of their size or space they only occupy (e.g span, imgs etc)
+display: inline-block  - squeezes it contents within the width of the webpage
+						(though you can work with height and width - just like block , unlike inline that doesnt have height )
+
+display: none - Removes any element away from the screen
+*/
+
+.div-1 {
+	/*default in display: block*/
+	background-color: orange;
+}
+
+.span-1 {
+	/*default in display: inline*/
+	background-color: lightcoral;
+}
+
+
+.inlineBlock {
+	display: inline-block;
+}
+.img {
+	width: 150px;
+	height: 150px;
+}
+
+.div-2 {
+	background-color: plum;
+}
+
+.span-2 {
+	background-color: grey;
+}
+
+
+.div-3 {
+	display: none;
+}

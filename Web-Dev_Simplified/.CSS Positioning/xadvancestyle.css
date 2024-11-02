@@ -1,0 +1,216 @@
+.flex-container {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	background-color: yellow;
+}
+
+.flex-item {
+	width: 200px;
+	margin: 10px;
+	border: 3px solid #333;
+	background-color: #dfdfdf;
+}
+
+.item-1 {
+	min-height: 100px;
+}
+
+.item-2 {
+	min-height: 200px;
+}
+
+.item-3 {
+	min-height: 300px;
+}
+
+/* transform 
+	- rotate: to rotate elements
+	- scale: to increase elements or decrease
+	- translate: allows us to move objects left,right,back,front
+
+	- skew: less useful (slants the object)
+	- combining multiple transform cases. transform: rotate(30deg) scale(.75)
+*/
+.box-container {
+	height: 500px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	background-color: lightblue;
+}
+
+.box-item1 {
+	height: 50px;
+	width: 50px;
+	background-color: #333;
+	margin: 10px;
+	border: 3px solid #333;
+	transform: rotate(75deg); /*rotates the element*/
+}
+
+.box-item2 {
+	height: 50px;
+	width: 50px;
+	background-color: #333;
+	margin: 10px;
+	border: 3px solid #333;
+	transform: scale(2); /*twice the size of the initial box*/
+}
+
+.box-item3 {
+	height: 50px;
+	width: 50px;
+	background-color: #333;
+	margin: 10px;
+	border: 3px solid #333;
+	transform: translateX(30px);	/*moves to right , if -30px it moves to left */
+	transform: translateY(30px);	/*moves down , if -30px it moves up*/
+	transform: translate(30px, -40px);	/* 30px moves right (x direction), if 40px it moves up (y direction)*/
+}
+
+.box-item4 {
+	height: 50px;
+	width: 50px;
+	background-color: #333;
+	margin: 10px;
+	border: 3px solid #333;
+	transform: skew(30deg);
+	transform: skew(30deg, -40deg);
+}
+
+.box-item5 {
+	height: 50px;
+	width: 50px;
+	background-color: #333;
+	margin: 10px;
+	border: 3px solid #333;
+	transform: rotate(30deg) scale(.75) translate(-10px);
+}
+
+
+/* --- Psuedo Elements ---
+	sudo elements requires you to know use the content property to set what 
+	the content of an element will be
+
+	we use it to add before or after element to , tags/elements with content
+	we cant use psuedo element on inputs, img etc - they are self closing tags with no content in them
+
+	P.S: you can only have one after and one before pseudo element per element
+*/
+.required::before {
+	content: ''; /*no content just an empty string*/
+	display: block;
+	width: 10px;
+	height: 10px;
+	background-color: red;
+}
+
+.required::after {
+	content: '*'; /*adds * after the name content*/
+	display: block;
+	width: 10px;
+	height: 10px;
+	/* background-color: blue; */
+}
+
+[data-tooltip]::after {
+	position: relative;
+}
+
+[data-tooltip]:hover::after {
+	content:attr(data-tooltip); /*on hover, the tooltip button appears*/
+	position: absolute;
+	top: 100%;
+	left: 0;
+	right: 0;
+	margin-top: 5px;
+	padding: 5px;
+	background-color: antiquewhite;
+}
+
+
+
+/* -- Media Queries
+	We have - media screen
+			- media speech
+			- media print
+	
+	media all - covers for all of the above all of the above
+*/
+.card {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border: 2px solid red;
+}
+
+.title {
+	font-size: 6rem;
+}
+
+.subtitle {
+	font-size: 4rem;
+}
+
+@media all and (max-width: 500px) {
+	.card {
+		color: blue;
+	}
+}
+
+/*works same as the above*/
+@media (max-width: 500px) {
+	.card {
+		color: blue;
+	}
+}
+
+@media (orientation: portrait) {
+	.title {
+		color: green;
+	}
+}
+
+@media (orientation: landscape), (min-width: 500px) {
+	.subtitle{
+		background-color: greenyellow;
+	}
+}
+
+
+/* Variables 
+	- decleared just like the normal javascript variable. a 'key' and a 'value'
+*/
+:root {
+	--div-background-color: red;
+	--text-clor: black;
+	--div-padding: 10px;
+	--div-margin: 10px;
+}
+
+.body {
+	background-color: var(--div-background-color, pink); /*declares a variable  in element outside of root*/
+}
+
+.child {
+	background-color: var(--div-background-color);
+	color: var(--text-clor);
+}
+
+.one {
+	--div-background-color: blue; /*overides the inital red*/
+	--text-clor: white; /*overides the inital black in root*/
+}
+
+.one-one {
+	margin: var(--div-margin);
+	padding: var(--div-padding);
+}
+
+.one-two {
+	margin: var(--div-margin);
+	padding: var(--div-padding);
+}
+

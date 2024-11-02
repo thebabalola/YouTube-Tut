@@ -1,0 +1,17 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
+img {
+	height: 100px;
+	width: 100px;
+	border-radius: 50px;
+	float: left;  /*push the img element to the left side of the p element*/
+	margin-right: 10px;
+	border-bottom: red 500px;
+}
+
+.username {
+	font-weight: bold;
+}
