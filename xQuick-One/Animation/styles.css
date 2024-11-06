@@ -82,13 +82,35 @@ body{
 	background-color: red;
 	height: 50%;
 	width: 50%;
-	transition: transform 1s ease;
+	/* transition: transform 1s steps(7, start) 350ms; */
+	transition: transform 1s cubic-bezier(0.51, -0.06, 0.42, 1.4);
 }
 
 .parent:hover .child {
 	background-color: greenyellow;
-	transform: translateX(100%);
+	/* transform: translateX(100%); */
+	animation: identifier 1s ease-in 350ms 100 alternate forwards; /*forward that is keep all my animations forward (the bigger keyframe 100%), it wouldnt automaticaaly come back. if backward it stays back and keep the animation at 0% keyframe*/
 }
+
+@keyframes identifier {
+	0% {
+		transform: translateX(0); /* stays|retains it position at top left corner*/
+		border-color: red;
+	}
+	33% {
+		transform: translateY(100%); /*that is, it would move down by 100%s*/
+		border-color: green;
+	}
+	66% {
+		transform: translateX(100%) translateY(100%); /*it moves right by 100% and moves*/
+		border-color: greenyellow;
+	}
+	100% {
+		transform: translateX(100%); /**/
+		border-color: lightskyblue;
+	}
+}
+
 
 /* @keyframes identifier {
 	0% {
