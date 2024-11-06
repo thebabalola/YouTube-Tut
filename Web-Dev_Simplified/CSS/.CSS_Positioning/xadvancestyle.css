@@ -24,7 +24,9 @@
 	min-height: 300px;
 }
 
-/* transform 
+/* The transform property
+
+transform:
 	- rotate: to rotate elements
 	- scale: to increase elements or decrease
 	- translate: allows us to move objects left,right,back,front
@@ -185,7 +187,7 @@
 */
 :root {
 	--div-background-color: red;
-	--text-clor: black;
+	--text-color: black;
 	--div-padding: 10px;
 	--div-margin: 10px;
 }
@@ -196,7 +198,7 @@
 
 .child {
 	background-color: var(--div-background-color);
-	color: var(--text-clor);
+	color: var(--text-color);
 }
 
 .one {

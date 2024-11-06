@@ -1,0 +1,72 @@
+/* Transition - enables one to define the transition between two statesof an element
+	Linear: The animation moves at a constant speed from start to finish. 
+			It’s straightforward but can look mechanical because there’s no acceleration or deceleration.
+			Often used for animations that don’t need to mimic real-life physics, such as loading progress bars.
+
+	Ease In: The transition starts slowly and then accelerates toward the end. It creates a sense of “building up” or “taking off.”
+			Useful for elements entering a screen, giving a natural feel as they gain momentum.
+
+	Ease Out: Starts fast and decelerates toward the end. This is ideal for when an element is leaving the screen or coming to a stop, providing a smooth landing effect.
+			Commonly used for pop-up dismissals or objects moving off-screen.
+
+	(Ease) or Ease In Out: Combines both ease in and ease out. 
+		This starts slowly, speeds up in the middle, then slows down towards the end, creating a smooth, natural effect.
+		Often used for longer transitions where a more gradual movement feels realistic and engaging.
+		Great for general-purpose animations where a smooth transition is needed.
+
+	The steps(): timing-function can be used in CSS animations and transitions to create stepped or "choppy" motion. 
+	Here's how it works- E.g: steps(7, start) or steps (5, end):
+						This specifies that the animation or transition will have 7 distinct steps. 
+						Each step is held for a certain portion of the total duration, and no smooth 
+						interpolation occurs between them, resulting in a "stepped" or "frame-by-frame" look.
+
+	Cubic Bezier: Allows custom easing with precise control by adjusting four points (P0 to P3) on a curve, creating unique easing effects.
+				This can be gotten in the chrome Dev tools, under styles. can be editted to suit transition of one choice.
+				It’s especially useful for creative animations where default easing types don’t quite capture the desired effect
+*/
+
+
+body {
+	margin: 100px;
+}
+
+.box {
+	width: 300px;
+	height: 300px;
+	margin: 10px;
+	background: #3DCCC7;
+	transition-property: all; /*- for performance reason it is not adviseable*/
+	transition-property: background, transform; /*picks Transform as also it property*/
+	transition-duration: 350ms;
+	transition-timing-function: cubic-bezier(0.58, 0.18, 0.62, 1.09), 2s;
+	transition-delay: 1.5s;
+
+	transition: background 350ms ease-in-out 2s, transform 350ms ease-in-out 2s;
+}
+
+.box:hover {
+	background: #FF6868;
+	transform: scale(1.2) translate(50px, 75px) rotate(40deg);
+	/* transform: scale(1.2); */
+	/* transform: skew(-15deg); */
+}
+
+
+/*Transform
+	Rotate: Rotates an element around a specified point (usually its center - rotates the element by 45 degrees.).
+	Scale: Resizes an element in both width and height. (element size changes in 1.5, 1.2 etc)
+	Translate: Moves an element along the X, Y, or Z axis. (elements moves in pixels or rems e.g 50px )
+	Skew: Tilts an element along the X or Y axis. (slants the element along 20 degrees or -2o degrees)
+
+
+	Perspective: Gives a sense of depth, making elements appear to recede into or come out of the screen.
+				Syntax: perspective(distance) - usually applied on a parent element
+				E.g- transform: perspective(500px); makes elements appear closer or further depending on the distance. Useful and Essential for realistic 3D effects.
+	
+	Matrix: A complex transform that combines multiple transformations (translation, scaling, rotation, and skewing) in a single function.
+			Syntax: matrix(a, b, c, d, tx, ty)
+			E.g: transform: matrix(1, 0.5, -0.5, 1, 0, 0); combines skewing, scaling, and translating.
+	
+	3D Transforms: rotateX(angle), rotateY(angle), and rotateZ(angle): Rotate elements around the X, Y, or Z axes for 3D effects.
+					translate3d(x, y, z) and scale3d(x, y, z): Move or scale elements in 3D space, adding a Z-axis for depth.
+*/

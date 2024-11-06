@@ -1,0 +1,114 @@
+/* --- Animation ---
+
+animation-name: Specifies the name of the @keyframes animation to apply to an element.
+				Example: animation-name: slideIn, moveRotateScale;
+
+animation-duration: Defines the time (in seconds or milliseconds) that the animation takes to complete one cycle.
+					Example: animation-duration: 2s;
+
+animation-timing-function: Controls the speed of the animation during each cycle, allowing for easing effects.
+							Example: animation-timing-function: ease-in-out;
+
+animation-delay: Sets a delay before the animation starts, allowing the element to stay in its initial state for a specified period.
+					Example: animation-delay: 1s;
+
+animation-iteration-count: Specifies the number of times the animation should repeat. You can use a specific number (e.g., 3) or infinite for a continuous loop.
+							Example: animation-iteration-count: infinite;
+
+animation-direction: Determines whether the animation plays forward, backward, or alternates between directions.
+					Example: animation-direction: alternate;	Options: normal (default), reverse, alternate, alternate-reverse.
+
+animation-fill-mode: Sets the style applied to the element before the animation starts and after it ends.
+					Example: animation-fill-mode: forwards;		Options: none (default), forwards (retains final state), backwards (applies initial state), or both.
+
+animation-play-state: Controls the animation’s playback state, allowing it to be paused or running.
+					Example: animation-play-state: paused; 		Options: running (default), paused.
+
+
+animation (shorthand):	Combines all the above properties in a single declaration.
+						Syntax: animation: name duration timing-function delay iteration-count direction fill-mode play-state;
+						Example: animation: slideIn 2s ease-in 1s infinite alternate forwards; 
+*/
+
+body{
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 100px;
+}
+
+.box {
+	width: 200px;
+	height: 200px;
+	background-color: burlywood;
+
+	animation-name: moveRotateScale;
+	animation-duration: 1s;
+	animation-timing-function: ease;
+	animation-delay: 200ms;
+	animation-iteration-count: infinite;
+	animation-direction: alternate-reverse;
+	animation-fill-mode: forwards;
+	animation-play-state: running;
+
+	animation: moveRotateScale 1s ease 200ms infinite alternate-reverse forwards running;
+	/* animation: name duration timing-function delay iteration-count direction fill-mode; */
+}
+
+@keyframes moveRotateScale {
+	from {
+		transform: translate(-50px, -25px) rotate(0);
+	}
+	to {
+		transform: translate(50px, 25px) rotate(100deg);
+	}
+}
+
+
+
+
+
+
+
+.parent {
+	background-color: hsla(200, 100%, 20%);
+	height: 400px;
+	width: 400px;
+}
+
+.child {
+	background-color: red;
+	height: 50%;
+	width: 50%;
+	transition: transform 1s ease;
+}
+
+.parent:hover .child {
+	background-color: greenyellow;
+	transform: translateX(100%);
+}
+
+/* @keyframes identifier {
+	0% {
+		transform: rotate(0deg);
+		border-color: red;
+	}
+	20% {
+		border-color: orange;
+	}
+	40% {
+		border-color: green;
+	}
+	60% {
+		border-color: greenyellow;
+	}
+	80% {
+		border-color: blue;
+	}
+	100% {
+		transform: rotate(360deg);
+		border-color: lightskyblue;
+	}
+} */
