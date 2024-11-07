@@ -1,0 +1,95 @@
+/* Pseudo Classes & Elements
+
+	Pseudoclasses (e.g., :hover, :focus) select elements based on their state or position.
+	Pseudoelements (e.g., ::before, ::after) create virtual elements that are part of the 
+	document’s styling and content flow but aren’t actually in the HTML structure.
+
+	PseudoClasses
+	:hover – Applies styles when an element is being hovered over by the cursor.
+	:active – Applies styles when an element (like a button) is being activated, usually by clicking on it.
+	:focus – Applies styles when an element (like an input field) is focused, often by clicking or using the Tab key.
+	:checked – Applies styles to checkboxes or radio buttons when they’re checked.
+	:nth-child() – Targets an element based on its position among siblings (e.g., every second child or third child).
+	:first-child and :last-child – Target the first or last child element among siblings.
+	:not() – Excludes elements matching a selector, which is useful for selective styling.
+	:is() – A newer pseudoclass that simplifies targeting multiple selectors with the same styles.
+
+	PseudoElements
+	The ::before pseudoelement adds content at the start of the (e.g h2) element.
+	The ::after pseudoelement adds content at the end of the (e.g h2) element.
+
+*/
+
+html {
+	font-family: Poppins, sans-serif;
+}
+
+body {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-size: 2rem;
+}
+
+
+h1 {
+	position: relative;
+}
+
+h1::before {
+	content: 'Hi';
+	font-style: italic;
+	font-weight: 300;
+	color: aqua;
+} 
+
+h1::after {
+	/* content: ', Hello World!'; */
+	content: ''; /*have to be empty if no text content would be there*/
+	background: red;
+	height: 10px;
+	width: 10px;
+	position: absolute;
+}
+
+p {
+	text-decoration: underline; /*used to underline text*/
+	color: aqua;
+}
+
+
+
+h2{
+	position: relative;
+	width: max-content; /*contents doesnt go beyond content width*/
+}
+h2::after {
+	content: '';
+	background-color: brown;
+	height: 5px;
+	width: 100%;
+
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+
+.p::before {
+	content: '';
+	background: lightblue;
+	height: 10px;
+	width: 10px;
+	display: block; /*stacks up contents on themselves*/
+	position: absolute;
+}
+
+.p::after {
+	content: '';
+	background: red;
+	height: 10px;
+	width: 10px;
+	display: block;
+	position: absolute;
+}
