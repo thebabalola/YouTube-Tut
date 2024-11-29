@@ -1,0 +1,206 @@
+--- Setting up your Development Environment
+
+
+
+
+	- First download and install nodejs from it official website
+	- verify the node exist: using; node -v and npm -v
+
+
+
+
+
+
+--- To Automate the Process ---
+
+0. (a). Download nodeJs from the official website and install to launch.
+	(b). verify node and mpn is installed with : node -v and nmp - v
+
+1. install create-react-app globally:  (in the command prompt using: npm install -g create-react-app).
+										create-react-app --version  (Verify it status, if installed)
+										create-react-app my-react-app (To create the app folder)
+
+2. Best - To use npx, run in command prompt:
+
+	- npx create-react-app my-react-app
+	(setup's create-react-app and initialise the project file 'my react app' with all neccessary dependencies)
+
+
+
+
+
+
+--- To manually go through the Process ---
+
+1. Set Up Your Project Directory
+	(a). Create a new project folder: (in terminal do);-
+		mkdir my-react-app
+		cd my-react-app
+	
+	(b). Initialize a new Node.js project. (This creates a package.json file with default settings.)
+		npm init -y	
+
+
+2. Install Dependencies
+	(a). npm install react react-dom
+
+	Install development tools:
+	(b). npm install -D webpack webpack-cli webpack-dev-server babel-loader @babel/core @babel/preset-env @babel/preset-react html-webpack-plugin
+
+
+	N.B: What These Do:
+		React and ReactDOM: Core React libraries.
+		Webpack: Bundles your JavaScript, CSS, and other assets.
+		Webpack Dev Server: Provides a live-reloading development server.
+		Babel: Transpiles modern JavaScript and JSX into browser-compatible JavaScript.
+		HTML Webpack Plugin: Automatically generates an index.html file with your bundled assets
+
+
+3. Create the Folder Structure
+Set up your project structure:
+
+my-react-app/
+├── public/
+│   └── index.html
+├── src/
+│   ├── index.js
+│   ├── App.js
+│   └── App.css
+├── package.json
+└── webpack.config.js
+
+
+4. Add the Entry HTML File
+Create public/index.html:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My React App</title>
+</head>
+<body>
+  <div id="root"></div>
+</body>
+</html>
+
+
+5.  Add React Files
+- Create src/index.js: (The rendering point)
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import './App.css';
+
+ReactDOM.render(<App />, document.getElementById('root'));
+
+
+- Create src/App.js: (The entry point for all pages)
+
+import React from 'react';
+
+function App() {
+  return (
+    <div>
+      <h1>Hello, React!</h1>
+    </div>
+  );
+}
+
+export default App;
+
+
+- Create src/App.css (optional - where all stylings go into):
+
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+
+6. Configure Babel
+- Create a .babelrc file in the root directory:
+
+{
+  "presets": ["@babel/preset-env", "@babel/preset-react"]
+}
+
+
+7. Configure Webpack
+- Create webpack.config.js in the root directory: (the folder carrying the app)
+
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
+  },
+  mode: 'development',
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: 'babel-loader',
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+    ],
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './public/index.html',
+    }),
+  ],
+  devServer: {
+    static: path.join(__dirname, 'dist'),
+    port: 3000,
+    open: true,
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
+};
+
+
+8. Add Scripts to package.json
+- In package.json, add the following under "scripts":
+
+"scripts": {
+  "start": "webpack serve",
+  "build": "webpack"
+}
+
+
+9. Run Your App
+
+(a).Start the development server:
+	npm start
+
+(b)O. pen http://localhost:3000 to see your React app.
+
+(c). Build the app for production:
+	npm run build
+
+This generates a production-ready version in the dist/ folder.
+
+
+
+10. Congratulations!
+You now have a manually configured React app with Webpack and Babel. 
+This setup is flexible and gives you full control over the configuration, unlike tools like Create React App.
+
+Typical Files in a Root Directory:
+	- package.json: Defines your app's dependencies and scripts.
+	- node_modules/: A folder automatically created by npm that stores installed packages.
+	- .gitignore: Lists files/folders Git should ignore.
+	- README.md: Documentation or a description of your project.
+
+(Additionally: in vs code extension - install 'simple react snippet' and 'Prettier' )

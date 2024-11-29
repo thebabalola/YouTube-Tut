@@ -1,0 +1,56 @@
+---- Pushing Local Created Files to Github (without a remote repo)
+
+npx create-react-app my-react-app
+cd my-react-app
+git init
+git remote add origin https://github.com/your-username/my-react-app.git
+git add .
+git commit -m "Initial commit"
+git push -u origin master
+
+
+
+
+ --- Here's a step-by-step guide on how to do it: ---
+
+1. Create a React App Locally
+First, you need to create a React app on your local machine. You can do this using npx (assuming you have Node.js and npm installed).
+
+	npx create-react-app my-react-app
+	cd my-react-app
+
+
+2. Initialize a Local Git Repository
+Inside your React app folder, initialize a new Git repository.
+
+	git init
+
+
+3. Create a New Repository on GitHub
+Go to GitHub and create a new repository:
+
+	Give your repository a name (e.g., my-react-app)
+	(Once you've created the repository, GitHub will show you instructions on how to link your local project to the GitHub repository.)
+
+
+4. Add GitHub Remote Repository
+In your terminal (inside the my-react-app folder), link your local project to the newly created GitHub repository:
+
+	git remote add origin https://github.com/your-username/my-react-app.git
+
+
+5. Add Files to Git and Commit
+Add the files to Git and commit the changes.
+
+	git add .
+	git commit -m "Initial commit"
+
+6. Push to GitHub
+Push your local commits to the remote GitHub repository.
+
+	git push -u origin master
+	This will push the changes from your local repository to the master branch of the GitHub repository.
+
+7. Check Your GitHub Repository
+Go to your GitHub repository's URL (e.g., https://github.com/your-username/my-react-app) and you should see your React app's files uploaded there.
+
